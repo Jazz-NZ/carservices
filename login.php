@@ -17,6 +17,16 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
     if($response->num_rows==1){
       //  $_SESSION['user_id'] = $korisnik->id;
+        $myArray = array();
+        
+
+        if($response){
+          while($red = $response->fetch_array()){
+            $myArray[] = $red;
+          }
+        }
+        $id = $myArray[0]['idWorker'];
+        $_SESSION['idWorker'] = $id;
         header('Location: home.php');
         exit();
     }else{
@@ -39,6 +49,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+     
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
