@@ -1,6 +1,25 @@
 <?php
-session_start();
 
+require "dbBroker.php";
+require "model/repair.php";
+
+session_start();
+if (!isset($_SESSION['idWorker'])) {
+    header('Location: login.php');
+    exit();
+}
+
+$id = $_SESSION['idWorker'];
+
+$podaci = Repair::getRepairByIdWorker($id,$connection);
+if (!$podaci) {
+    echo "Error on getting repair's data!";
+    die();
+}
+if ($podaci->num_rows == 0) {
+    echo "Worker does not have any repairs!";
+    die();
+} else {
 
 ?>
 
@@ -27,8 +46,29 @@ session_start();
     </header>
   </div>
 </main>
-<?php
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Repair ID</th>
+      <th scope="col">description</th>
+    </tr>
+  </thead>
+  <tbody>
+                    <?php
+                    while ($red = $podaci->fetch_array()) :
+                    ?>
+                        <tr>
+                            <td><?php echo $red["idRepair"] ?></td>
+                            <td><?php echo $red["description"] ?></td>
+                    
+                        </tr>
+                <?php
+                    endwhile;
+                } #zatvaranje elsa otvorenog na liniji 21
+                ?>
 
-?>
+                </tbody>
+
+</table>
 </body>
 </html>
