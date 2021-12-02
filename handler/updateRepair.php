@@ -5,13 +5,13 @@
 
 session_start();
 
-
-
 if(isset($_POST['descripton']) && isset($_POST['idCar']) 
 && isset($_POST['dateFrom']) && isset($_POST['dateTo'])){
-  
+
     $repair = new Repair(null,$_POST['descripton'],$_SESSION['idWorker'],$_POST['dateFrom'],$_POST['dateTo'],$_POST['idCar']);
-    $status = Repair::add($repair, $connection);
+    
+    //$status = Repair::add($repair, $connection);
+    $status = $repair->update($_POST['idRepair'],$connection);
 
     if($status){
         echo 'Success';
@@ -21,8 +21,5 @@ if(isset($_POST['descripton']) && isset($_POST['idCar'])
     }
 
 }
-
-
-
 
 ?>

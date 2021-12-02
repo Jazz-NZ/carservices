@@ -43,12 +43,13 @@ if ($podaci->num_rows == 0) {
         <li class="nav-item"><button type="button" class="btn btn-primary">Home</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#myModal" onclick="openForm()">Add</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="deleteRow()">Delete</button></li>
+        <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="openEditForm()">Edit</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Search</button></li>
       </ul>
     </header>
   
 
-    <div id = "myForm" class="modal" tabindex="-1" role="dialog">
+<div id = "myForm" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,6 +89,64 @@ if ($podaci->num_rows == 0) {
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" onclick="onSubmit()">Save changes</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeForm()">Close</button>
+                                      </div>
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<div id = "eModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeEditForm()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container addrepair-form">
+                        <form action="#" method="post" id="efrm">
+                            <h3 style="color: black; text-align: center">Edit Repair</h3>
+                            <div class="row">
+                                <div class="col-md-11 ">
+                                    <div class="form-group">
+                                    <label for="">ID</label>
+                                        <input id="id" type="text" name="idRepair" class="form-control" value="" readonly />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Description</label>
+                                        <input id="descripton" type="text" style="border: 1px solid black" name="descripton" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Car ID</label>
+                                        <input id = "idCar" type="text" style="border: 1px solid black" name="idCar" class="form-control" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Date From</label>
+                                            <input id="dateFrom" type="date" style="border: 1px solid black" name="dateFrom" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Date To</label>
+                                            <input id="dateTo" type="date" style="border: 1px solid black" name="dateTo" class="form-control" />
+                                        </div>
+                                    </div>
+                                   
+                                    
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" onclick="onEdit()">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeEditForm()">Close</button>
                                       </div>
                                 </div>
                             </div>

@@ -18,7 +18,7 @@ class Repair{
         $this->idCar = $idCar;
     }
 
-    //static function for loging
+    //static function after loging
     public static function getRepairByIdWorker($idWorker1, mysqli $conn)
     {
         $query = "SELECT * FROM repair WHERE idWorker='$idWorker1'";
@@ -40,4 +40,25 @@ class Repair{
         return $conn->query($query);
     }
 
+    public static function getById($id, mysqli $conn){
+        $query = "SELECT * FROM repair WHERE idRepair=$id";
+
+        $myObj = array();
+        if($msqlObj = $conn->query($query)){
+            while($red = $msqlObj->fetch_array(1)){
+                $myObj[]= $red;
+            }
+        }
+
+        return $myObj;
+
+    }
+
+    public function update($id, mysqli $conn)
+    {
+        $query = "UPDATE repair set descr = '$this->description',dateFrom = '$this->dateFrom',dateTo = '$this->dateTo' , idCar = '$this->idCar' WHERE idRepair='$id'";
+        return $conn->query($query);
+    }
+
 }
+
