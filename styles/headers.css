@@ -100,3 +100,9 @@
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+.nav-item{
+  margin-right: 20px;
+}
+.btn btn-light{
+  color: white;
+}

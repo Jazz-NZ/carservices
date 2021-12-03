@@ -47,18 +47,26 @@ if ($podaci->num_rows == 0) {
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="deleteRow()">Delete</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="openEditForm()">Edit</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="sortTable()">Search</button></li>
+        <li class="nav-item">
+        <div class="input-group">
+            <input id="search" type="search" class="form-control rounded" placeholder="Search Car ID" aria-label="Search"
+            aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-primary" onclick="searchCarID()">Search</button>
+        </div>
+
+        </li>
         <li class="nav-item dropdown">
-       <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li onclick="sortTable(1)"><a href="#" >Description</a></li>
-      <li onclick="sortTable(3)"><a href="#">Date FROM</a></li>
-      <li onclick="sortTable(4)"><a href="#">Date TO</a></li>
-      
-    </ul>
-  </div>
-        
+          <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li onclick="sortTable(1)"><a href="#" >Description</a></li>
+                <li onclick="sortTable(3)"><a href="#">Date FROM</a></li>
+                <li onclick="sortTable(4)"><a href="#">Date TO</a></li>
+                
+              </ul>
+          </div>
+          </li>
       </ul>
     </header>
   
