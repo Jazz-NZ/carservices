@@ -8,6 +8,8 @@ function closeForm() {
 }
 
 function openEditForm() {
+
+
   document.getElementById("eModal").style.display = "block";
   const checked = $('input[name=checked-donut]:checked'); //getting seleted row id
   
@@ -79,9 +81,11 @@ function onSubmit(){
 
 function deleteRow(){
 
-  console.log("Deleting selected repair");
+  if(confirm("Confirm delete operation")){
+    console.log("Deleting selected repair");
 
   const checked = $('input[name=checked-donut]:checked');
+
 
   console.log(checked.val());
 
@@ -94,7 +98,7 @@ function deleteRow(){
   req.done(function(res, textStatus, jqXHR){
       if(res=="Success"){
          checked.closest('tr').remove();
-         alert('Repair is deleteed');
+         alert('Selected repair is deleted');
          console.log('Deleted');
       }else {
       console.log("Repair is NOT deleted "+res);
@@ -103,11 +107,15 @@ function deleteRow(){
       }
       console.log(res);
   });
+  }
+
+ 
 
 }
 
 function onEdit(){
 
+  
   event.preventDefault();
   console.log("Editing repair");
   const $form =$('#efrm');
@@ -140,4 +148,40 @@ function onEdit(){
       console.error('Error occured '+textStatus, errorThrown)
   });
 
+}
+
+function sortTable(selectedColumn) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[selectedColumn];
+      y = rows[i + 1].getElementsByTagName("TD")[selectedColumn];
+      // Check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        // If so, mark as a switch and break the loop:
+        console.log(x.innerHTML.toLowerCase());
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
 }

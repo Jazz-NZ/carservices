@@ -28,7 +28,9 @@ if ($podaci->num_rows == 0) {
 <link href="styles/headers.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="scripts/homeScript.js"></script>
 </head>
@@ -44,7 +46,19 @@ if ($podaci->num_rows == 0) {
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#myModal" onclick="openForm()">Add</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="deleteRow()">Delete</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="openEditForm()">Edit</button></li>
-        <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Search</button></li>
+        <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="sortTable()">Search</button></li>
+        <li class="nav-item dropdown">
+       <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li onclick="sortTable(1)"><a href="#" >Description</a></li>
+      <li onclick="sortTable(3)"><a href="#">Date FROM</a></li>
+      <li onclick="sortTable(4)"><a href="#">Date TO</a></li>
+      
+    </ul>
+  </div>
+        
       </ul>
     </header>
   
@@ -160,7 +174,7 @@ if ($podaci->num_rows == 0) {
 </div>
 </main>
 
-  <table class="table">
+  <table id="myTable" class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Repair ID</th>
