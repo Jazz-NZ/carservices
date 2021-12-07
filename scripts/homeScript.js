@@ -26,9 +26,6 @@ function openEditForm() {
         $('#descripton').val(response[0]['descr']);
         console.log(response[0]['descr']);
 
-        // $('#katedra').val(response[0]['katedra'].trim());
-        // console.log(response[0]['katedra'].trim());
-
         $('#idCar').val(response[0]['idCar'].trim());
         console.log(response[0]['idCar'].trim());
 

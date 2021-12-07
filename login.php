@@ -16,7 +16,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $response = Worker::logInWorker($uname, $upass, $connection);
 
     if($response->num_rows==1){
-      //  $_SESSION['user_id'] = $korisnik->id;
+      
         $myArray = array();
         
 

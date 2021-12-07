@@ -42,11 +42,11 @@ if ($podaci->num_rows == 0) {
 <div class="container">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
-        <li class="nav-item"><button type="button" class="btn btn-primary">Home</button></li>
+       
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#myModal" onclick="openForm()">Add</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="deleteRow()">Delete</button></li>
         <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="openEditForm()">Edit</button></li>
-        <li class="nav-item"><button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick="sortTable()">Search</button></li>
+        
         <li class="nav-item">
         <div class="input-group">
             <input id="search" type="search" class="form-control rounded" placeholder="Search Car ID" aria-label="Search"
@@ -214,7 +214,7 @@ if ($podaci->num_rows == 0) {
                         </tr>
                 <?php
                     endwhile;
-                } #zatvaranje elsa otvorenog na liniji 21
+                }
                 ?>
 
                 </tbody>
